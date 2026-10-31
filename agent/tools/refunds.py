@@ -17,7 +17,7 @@ def calculate_refund(booking_id: str, cancel_time: str | None = None) -> dict:
 
     Returns:
         A dictionary with can_cancel, hours_before_start, refund_percent,
-        rental_refund_eur, deposit_refund_eur, booking_fee_refund_eur,
+        rental_refund_eur, deposit_refund_eur, booking_fee_eur, booking_fee_refund_eur,
         total_refund_eur and refund_method. If the booking cannot be cancelled, can_cancel
         is False with a reason. If the booking does not exist or cancel_time is invalid,
         an error is returned.
@@ -68,6 +68,7 @@ def calculate_refund(booking_id: str, cancel_time: str | None = None) -> dict:
             "refund_percent": refund_percent,
             "rental_refund_eur": rental_refund,
             "deposit_refund_eur": deposit_refund,
+            "booking_fee_eur": booking["booking_fee_eur"],
             "booking_fee_refund_eur": 0,
             "total_refund_eur": total_refund,
             "refund_method": refund_method,
