@@ -1,0 +1,128 @@
+[
+  {
+    "id": "refund_50_percent",
+    "category": "refund",
+    "question": "How much do I get back if I cancel booking CW-1002 now?",
+    "expected_tools": ["calculate_refund"],
+    "must_contain": ["340"],
+    "must_not_contain": [],
+    "note": "33 h before start -> 50% of 80 EUR + 300 EUR deposit = 340 EUR"
+  },
+  {
+    "id": "refund_exactly_48h",
+    "category": "refund",
+    "question": "I want to cancel CW-1007. How much money will I get back?",
+    "expected_tools": ["calculate_refund"],
+    "must_contain": ["186"],
+    "must_not_contain": [],
+    "note": "exactly 48 h before start -> 100% of 36 EUR + 150 EUR deposit = 186 EUR"
+  },
+  {
+    "id": "refund_less_than_24h",
+    "category": "refund",
+    "question": "If I cancel CW-1003 today, what is my refund?",
+    "expected_tools": ["calculate_refund"],
+    "must_contain": ["50"],
+    "must_not_contain": ["62"],
+    "note": "6 h before start -> 0% of rental, only the 50 EUR deposit; 62 would mean the model added the rental price"
+  },
+  {
+    "id": "refund_other_time",
+    "category": "refund",
+    "question": "How much would I get back for CW-1001 if I cancel on 12 June at 9:00?",
+    "expected_tools": ["calculate_refund"],
+    "must_contain": ["70"],
+    "must_not_contain": [],
+    "note": "25 h before start -> 50% of 40 EUR + 50 EUR deposit = 70 EUR; needs cancel_time"
+  },
+  {
+    "id": "refund_polish",
+    "category": "refund",
+    "question": "Ile pieniędzy dostanę z powrotem, jeśli anuluję rezerwację CW-1009?",
+    "expected_tools": ["calculate_refund"],
+    "must_contain": ["169"],
+    "must_not_contain": [],
+    "note": "question in Polish; 121 h before start -> 119 EUR + 50 EUR deposit = 169 EUR"
+  },
+  {
+    "id": "cannot_cancel_completed",
+    "category": "booking",
+    "question": "Can I cancel CW-1006 and get my money back?",
+    "expected_tools": ["calculate_refund"],
+    "must_contain": [],
+    "must_not_contain": ["12 EUR", "€12", "72"],
+    "note": "status completed -> cannot be cancelled, nothing refunded"
+  },
+  {
+    "id": "unknown_booking",
+    "category": "booking",
+    "question": "What are the details of booking CW-9999?",
+    "expected_tools": ["get_booking"],
+    "must_contain": ["CW-9999"],
+    "must_not_contain": ["confirmed"],
+    "note": "booking does not exist -> agent says it was not found, does not invent details"
+  },
+  {
+    "id": "opening_hours",
+    "category": "policy",
+    "question": "What are your opening hours in summer?",
+    "expected_tools": ["search_policies"],
+    "must_contain": ["08:00", "20:00"],
+    "must_not_contain": [],
+    "note": "April to October: every day 08:00-20:00"
+  },
+  {
+    "id": "ebike_day_price",
+    "category": "policy",
+    "question": "How much does it cost to rent an e-bike for a day?",
+    "expected_tools": ["search_policies"],
+    "must_contain": ["40"],
+    "must_not_contain": [],
+    "note": "electric bike: 40 EUR per day"
+  },
+  {
+    "id": "ebike_deposit",
+    "category": "policy",
+    "question": "What deposit do I need for an electric bike?",
+    "expected_tools": ["search_policies"],
+    "must_contain": ["150"],
+    "must_not_contain": [],
+    "note": "deposit per electric bike: 150 EUR"
+  },
+  {
+    "id": "bad_weather",
+    "category": "staff_decides",
+    "question": "There will be a storm on the day of my rental CW-1001. Will I get a full refund?",
+    "expected_tools": [],
+    "must_contain": ["help@citywheels.example"],
+    "must_not_contain": ["you will get a full refund"],
+    "note": "staff decide each case -> no promise, contact the staff"
+  },
+  {
+    "id": "change_booking",
+    "category": "staff_decides",
+    "question": "Please change my booking CW-1001 to 14 June.",
+    "expected_tools": [],
+    "must_contain": ["help@citywheels.example"],
+    "must_not_contain": ["has been changed", "I have changed"],
+    "note": "agent cannot change bookings -> explain the rule and send to the staff"
+  },
+  {
+    "id": "off_topic_capital",
+    "category": "refuse",
+    "question": "What is the capital of Australia?",
+    "expected_tools": [],
+    "must_contain": ["help@citywheels.example"],
+    "must_not_contain": ["Canberra"],
+    "note": "not about CityWheels -> refuse and point to the staff"
+  },
+  {
+    "id": "off_topic_recipe",
+    "category": "refuse",
+    "question": "Can you give me a recipe for pizza?",
+    "expected_tools": [],
+    "must_contain": ["help@citywheels.example"],
+    "must_not_contain": ["flour", "dough"],
+    "note": "not about CityWheels -> refuse and point to the staff"
+  }
+]
