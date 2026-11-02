@@ -42,11 +42,3 @@ def run_agent(question, model):
                       " Please contact the staff: help@citywheels.example, +48 000 000 000",
             "tools_called": tools_called,
             }
-
-if __name__ == "__main__":
-    from agent.model import GeminiModel
-    model = GeminiModel()
-    question = "What is the capital of Australia?"
-    result = run_agent(question, model)
-    print(result["answer"])
-    print(result["tools_called"])
