@@ -23,3 +23,11 @@ Copy `.env.example` to `.env` and add your Gemini API key. Then, from the projec
 
 - [SOLUTION.md](SOLUTION.md) – how the agent works, model choice, tests, evaluation results and limitations.
 - [data/README.md](data/README.md) – the original description of the data and the fixed current date.
+
+## Contact
+
+Maja Bednarek
+
+- GitHub: [majkab8](https://github.com/majkab8)
+- Email: [bednarekmaja02@gmail.com]
+- LinkedIn: [https://www.linkedin.com/in/maja-bednarek-599119324/]
